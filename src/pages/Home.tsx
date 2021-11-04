@@ -1,40 +1,45 @@
-import { Card } from "components";
+import { useEffect, useState } from "react";
+import { Button, Card, FavoriteTab } from "components";
 import TinderCard from "react-tinder-card";
-import { Favorite, Logo, Profile } from "icons";
-import * as S from "styles/pages/Home";
-import Button from "components/Button/Button";
 import { useAppDispatch, useAppSelector } from "store";
-import { useEffect } from "react";
-import { fetchMovie, User } from "store/movieSlice";
+import { Logo, Profile } from "icons";
+import * as S from "styles/pages/Home";
+import { fetchMovie } from "store/movieSlice";
+import { addFavorite } from "store/favoriteSlice";
 import "styles/pages/tindercard-style.css";
 
 const Home = () => {
+  const [toggleTab, setToggleTab] = useState<boolean>(true);
   const dispatch = useAppDispatch();
-  const state = useAppSelector((state) => state.movies);
-
-  const onCardLeftScreen = (user: User) => {
-    console.log("User:" + user.firstName);
-  };
+  const movieState = useAppSelector((state) => state.movies);
+  const favoriteState = useAppSelector((state) => state.favorites);
 
   useEffect(() => {
     dispatch(fetchMovie());
   }, []);
-  const movies = state.data?.data;
   return (
     <S.Container>
       <S.MainWrapper>
         <S.Header>
           <Profile />
           <Logo />
-          <Favorite />
+          <S.StyledFavorite
+            onClick={() => {
+              setToggleTab(!toggleTab);
+              console.log(favoriteState);
+            }}
+          />
         </S.Header>
+        <FavoriteTab toggleTab={toggleTab} />
         <S.CardContainer>
-          {movies?.map((user, key) => {
+          {movieState.data?.data.map((user, key) => {
             return (
               <TinderCard
                 className="swipe"
                 key={key}
-                onCardLeftScreen={() => onCardLeftScreen(user)}
+                onSwipe={(dir) => {
+                  if (dir === "right") dispatch(addFavorite(user));
+                }}
                 preventSwipe={["up", "down"]}
               >
                 <Card user={user} />

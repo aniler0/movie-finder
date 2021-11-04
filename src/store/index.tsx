@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import favoriteSlice from "./favoriteSlice";
 import movieSlice from "./movieSlice";
 
 export const store = configureStore({
   //we assign all slicers which has reducers in the configureStore object.
   reducer: {
     movies: movieSlice,
+    favorites: favoriteSlice,
   },
 });
 

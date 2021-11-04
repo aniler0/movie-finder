@@ -1,5 +1,5 @@
+import { Favorite } from "icons";
 import styled from "styled-components";
-
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -9,6 +9,7 @@ export const Container = styled.div`
   max-width: 100%;
   overflow-x: hidden;
   overflow-y: hidden;
+  position: relative;
 `;
 export const MainWrapper = styled.div`
   display: flex;
@@ -29,4 +30,7 @@ export const CardContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+export const StyledFavorite = styled(Favorite)`
+  cursor: pointer;
 `;
