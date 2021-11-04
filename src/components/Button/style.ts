@@ -6,7 +6,6 @@ export const ButtonWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 130px;
-  height: 62px;
 `;
 
 export const StyledDislike = styled(Dislike)`

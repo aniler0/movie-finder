@@ -1,9 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import movieSlice from "./movieSlice";
 
 export const store = configureStore({
   //we assign all slicers which has reducers in the configureStore object.
-  reducer: {},
+  reducer: {
+    movies: movieSlice,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>; //gets types from slices and combine all types inside of rootstate.

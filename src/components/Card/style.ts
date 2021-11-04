@@ -1,11 +1,18 @@
 import styled from "styled-components";
 
-export const CardWrapper = styled.div`
+interface WrapperProps {
+  url: string;
+}
+
+export const CardWrapper = styled.div<WrapperProps>`
   width: 300px;
   height: 450px;
   background-color: aqua;
   border-radius: 24px;
   position: relative;
+  background-image: url(${({ url }) => url});
+  background-size: cover;
+  background-position: center;
 `;
 export const TextWrapper = styled.div`
   display: flex;
@@ -21,13 +28,14 @@ export const TextWrapper = styled.div`
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 110%);
 `;
 export const Name = styled.p`
-  width: 249px;
+  width: 280px;
+  overflow-wrap: break-word;
   height: 42px;
   font-family: "Rubik", sans-serif;
   font-style: normal;
   font-weight: 600;
-  font-size: 28px;
-  line-height: 42px;
+  font-size: 24px;
+  line-height: 20px;
   color: #ffffff;
 `;
 export const Country = styled.p`
@@ -44,7 +52,5 @@ export const Genre = styled.p`
   font-weight: normal;
   font-size: 18px;
   line-height: 27px;
-  /* identical to box height */
-
   color: #ffffff;
 `;

@@ -1,12 +1,17 @@
+import { User } from "store/movieSlice";
 import * as S from "./style";
 
-const Card = () => {
+interface user {
+  user: User;
+}
+
+const Card = ({ user }: user) => {
   return (
-    <S.CardWrapper>
+    <S.CardWrapper url={user.picture}>
       <S.TextWrapper>
-        <S.Name>Ömer,23</S.Name>
-        <S.Country>Bursa</S.Country>
-        <S.Genre>215 KM</S.Genre>
+        <S.Name>{user.firstName}</S.Name>
+        <S.Country>{user.title}</S.Country>
+        <S.Genre>{user.id}</S.Genre>
       </S.TextWrapper>
     </S.CardWrapper>
   );

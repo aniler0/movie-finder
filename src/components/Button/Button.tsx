@@ -2,7 +2,7 @@ import * as S from "./style";
 
 const Button = () => {
   const click = () => {
-    console.log("bastın ömere");
+    console.log("clicked");
   };
 
   return (
