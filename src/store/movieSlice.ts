@@ -1,36 +1,20 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import api from "api/api";
+import { FetchedDataState, RootState } from "types/movieSlice";
 
-export interface User {
-  id: string;
-  title: string;
-  firstName: string;
-  lastName: string;
-  picture: string;
-}
-
-interface RootObject {
-  data: User[];
-  total: number;
-  page: number;
-  limit: number;
-}
-
-interface MovieState {
-  data: RootObject | null;
-  loading: boolean;
-  error: string;
-}
-
-const initialState: MovieState = {
-  data: null,
+const initialState: RootState = {
+  data: {} as FetchedDataState,
   loading: false,
   error: "",
 };
+
 export const fetchMovie = createAsyncThunk("fetchMovie", async () => {
-  const response = await api().get<RootObject>("/user");
+  const response = await api().get<FetchedDataState>(
+    "/Top250Movies/k_a5odkv9v"
+  );
   return response.data;
 });
+
 const movieSlice = createSlice({
   name: "movieList",
   initialState,

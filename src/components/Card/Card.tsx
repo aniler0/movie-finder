@@ -1,17 +1,13 @@
-import { User } from "store/movieSlice";
+import { Movie } from "types/movieSlice";
 import * as S from "./style";
 
-interface user {
-  user: User;
-}
-
-const Card = ({ user }: user) => {
+const Card = (movie: Movie) => {
   return (
-    <S.CardWrapper url={user.picture}>
+    <S.CardWrapper url={movie.image}>
       <S.TextWrapper>
-        <S.Name>{user.firstName}</S.Name>
-        <S.Country>{user.title}</S.Country>
-        <S.Genre>{user.id}</S.Genre>
+        <S.Name>{movie.title}</S.Name>
+        <S.Genre>{movie.year}</S.Genre>
+        <S.ImdbRating>IMDB Rating:{movie.imDbRating}</S.ImdbRating>
       </S.TextWrapper>
     </S.CardWrapper>
   );

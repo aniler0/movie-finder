@@ -13,6 +13,7 @@ export const CardWrapper = styled.div<WrapperProps>`
   background-image: url(${({ url }) => url});
   background-size: cover;
   background-position: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 `;
 export const TextWrapper = styled.div`
   display: flex;
@@ -38,7 +39,7 @@ export const Name = styled.p`
   line-height: 20px;
   color: #ffffff;
 `;
-export const Country = styled.p`
+export const ImdbRating = styled.p`
   font-family: "Rubik", sans-serif;
   font-style: normal;
   font-weight: normal;

@@ -1,4 +1,6 @@
+import { useDispatch } from "react-redux";
 import { useAppSelector } from "store";
+import { deleteFavorite } from "store/favoriteSlice";
 import * as S from "./style";
 
 type FavoritePropsType = {
@@ -7,20 +9,24 @@ type FavoritePropsType = {
 
 const FavoriteTab = ({ toggleTab }: FavoritePropsType) => {
   const favorites = useAppSelector((state) => state.favorites);
+  const dispatch = useDispatch();
   return (
     <S.FavoriteTab toggleTab={toggleTab}>
       <S.FavoriteTitle>Favorite Movies</S.FavoriteTitle>
       <S.FavoriteItemContainer>
-        {favorites.favorites.map((favorite) => {
-          console.log(favorite);
-
+        {favorites.favorites.map((favorite, key) => {
+          console.log(favorites);
           return (
-            <>
-              <S.FavoriteItem>
-                <h1>{favorite.firstName}</h1>
-                <h1>{favorite.title}</h1>
-              </S.FavoriteItem>
-            </>
+            <S.FavoriteItem key={key}>
+              <S.MovieImage src={favorite.image} alt={favorite.id} />
+              <S.Details>
+                <S.Title>{favorite.title}</S.Title>
+                <S.ImdbRating>{favorite.imDbRating}</S.ImdbRating>
+              </S.Details>
+              <button onClick={() => dispatch(deleteFavorite(favorite.id))}>
+                Delete
+              </button>
+            </S.FavoriteItem>
           );
         })}
       </S.FavoriteItemContainer>
