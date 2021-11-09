@@ -1,3 +1,4 @@
+import { Delete } from "icons";
 import { useDispatch } from "react-redux";
 import { useAppSelector } from "store";
 import { deleteFavorite } from "store/favoriteSlice";
@@ -21,11 +22,13 @@ const FavoriteTab = ({ toggleTab }: FavoritePropsType) => {
               <S.MovieImage src={favorite.image} alt={favorite.id} />
               <S.Details>
                 <S.Title>{favorite.title}</S.Title>
-                <S.ImdbRating>{favorite.imDbRating}</S.ImdbRating>
+                <S.ImdbRating>IMDB:{favorite.imDbRating}</S.ImdbRating>
               </S.Details>
-              <button onClick={() => dispatch(deleteFavorite(favorite.id))}>
+              <S.StyledDelete
+                onClick={() => dispatch(deleteFavorite(favorite.id))}
+              >
                 Delete
-              </button>
+              </S.StyledDelete>
             </S.FavoriteItem>
           );
         })}

@@ -7,10 +7,10 @@ interface WrapperProps {
 export const CardWrapper = styled.div<WrapperProps>`
   width: 300px;
   height: 450px;
-  background-color: aqua;
   border-radius: 24px;
   position: relative;
   background-image: url(${({ url }) => url});
+  image-rendering: auto;
   background-size: cover;
   background-position: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);

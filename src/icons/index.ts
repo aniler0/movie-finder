@@ -1,3 +1,4 @@
+export { default as Delete } from "./Delete";
 export { default as Dislike } from "./Dislike";
 export { default as Favorite } from "./Favorite";
 export { default as Like } from "./Like";

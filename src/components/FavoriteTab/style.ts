@@ -1,3 +1,4 @@
+import { Delete } from "icons";
 import styled from "styled-components";
 
 type FavoriteTabType = {
@@ -18,7 +19,7 @@ export const FavoriteTab = styled.div<FavoriteTabType>`
   overflow-y: scroll;
   visibility: ${({ toggleTab }) => toggleTab && "hidden"};
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: white;
 `;
 export const FavoriteTitle = styled.h1`
   font-family: "Rubik", sans-serif;
@@ -47,21 +48,27 @@ export const FavoriteItem = styled.div`
 export const MovieImage = styled.img`
   width: 70px;
   height: 70px;
+  padding: 5px;
 `;
 export const Details = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  width: 60%;
+  width: 50%;
 `;
 export const Title = styled.h1`
   text-align: left;
   width: 100%;
   font-family: "Rubik", sans-serif;
-  font-size: medium;
+  font-size: small;
+  padding: 5px;
 `;
 export const ImdbRating = styled.h1`
   font-family: "Rubik", sans-serif;
   font-size: x-small;
+  padding: 5px;
+`;
+export const StyledDelete = styled(Delete)`
+  cursor: pointer;
 `;

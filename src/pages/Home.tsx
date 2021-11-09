@@ -42,6 +42,7 @@ const Home = () => {
           <Profile />
           <Logo />
           <S.StyledFavorite
+            toggle={toggleTab}
             onClick={() => {
               setToggleTab(!toggleTab);
             }}

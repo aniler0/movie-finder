@@ -1,5 +1,8 @@
 import { Favorite } from "icons";
 import styled from "styled-components";
+
+type FavoriteStyleProp = { toggle: boolean };
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -31,6 +34,9 @@ export const CardContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
-export const StyledFavorite = styled(Favorite)`
+export const StyledFavorite = styled(Favorite)<FavoriteStyleProp>`
   cursor: pointer;
+  & path {
+    fill: ${({ toggle }) => !toggle && "#c90000"};
+  }
 `;
