@@ -19,6 +19,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(fetchMovie());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -30,6 +31,7 @@ const Home = () => {
         return dispatch(addFavorite(elm));
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onCardLeftScreen = () => {
