@@ -22,7 +22,7 @@ export const FavoriteTab = styled.div<FavoriteTabType>`
   background-color: white;
   @media (max-width: 768px) {
     width: 100%;
-    top: 100px;
+    top: 90px;
   }
 `;
 export const FavoriteTitle = styled.h1`
