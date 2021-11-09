@@ -20,6 +20,10 @@ export const FavoriteTab = styled.div<FavoriteTabType>`
   visibility: ${({ toggleTab }) => toggleTab && "hidden"};
   border-radius: 10px;
   background-color: white;
+  @media (max-width: 768px) {
+    width: 100%;
+    top: 100px;
+  }
 `;
 export const FavoriteTitle = styled.h1`
   font-family: "Rubik", sans-serif;

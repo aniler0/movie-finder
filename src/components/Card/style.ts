@@ -22,7 +22,7 @@ export const TextWrapper = styled.div`
   position: absolute;
   padding: 0 4rem 0 1rem;
   max-width: 100%;
-  height: 140px;
+  height: 150px;
   bottom: 0;
   border-bottom-left-radius: 24px;
   border-bottom-right-radius: 24px;
@@ -31,7 +31,7 @@ export const TextWrapper = styled.div`
 export const Name = styled.p`
   width: 280px;
   overflow-wrap: break-word;
-  height: 42px;
+  padding-bottom: 1em;
   font-family: "Rubik", sans-serif;
   font-style: normal;
   font-weight: 600;
