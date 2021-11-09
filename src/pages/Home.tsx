@@ -5,14 +5,14 @@ import { useAppDispatch, useAppSelector } from "store";
 import { fetchMovie } from "store/movieSlice";
 import { addFavorite } from "store/favoriteSlice";
 import { Logo, Profile } from "icons";
+import { getLocalStorageData } from "utils/localStorage";
 import * as S from "styles/pages/Home";
 import { Movie } from "types/movieSlice";
 import "styles/pages/tindercard-style.css";
-import { data } from "utils/localStorage";
 
 const Home = () => {
-  const [toggleTab, setToggleTab] = useState<boolean>(true);
-  const [localData, setLocalData] = useState<any>([]); //i store a datas in this state
+  const [toggleTab, setToggleTab] = useState<boolean>(false);
+  const [localData, setLocalData] = useState<Movie[]>([]); //i store a datas in this state
   const [index, setIndex] = useState<number>(0); // i can check the cards with this state
   const dispatch = useAppDispatch();
   const movieState = useAppSelector((state) => state.movies);
@@ -23,10 +23,10 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    if (data) {
+    if (getLocalStorageData()) {
       //if there is a data in localstorage we take this in state.
-      setLocalData(data);
-      data.map((elm: Movie) => {
+      setLocalData(getLocalStorageData);
+      getLocalStorageData().map((elm: Movie) => {
         //i map all data to dispatch and add in favorite state.
         return dispatch(addFavorite(elm));
       });
@@ -43,22 +43,30 @@ const Home = () => {
         <S.Header>
           <Profile />
           <Logo />
-          <S.StyledFavorite
-            toggle={toggleTab}
-            onClick={() => {
-              setToggleTab(!toggleTab);
-            }}
-          />
+
+          {!toggleTab ? (
+            <S.StyledFavorite
+              onClick={() => {
+                setToggleTab(!toggleTab);
+              }}
+            />
+          ) : (
+            <S.StyledSelectedFavorite
+              onClick={() => {
+                setToggleTab(!toggleTab);
+              }}
+            />
+          )}
         </S.Header>
-        <FavoriteTab toggleTab={toggleTab} />
+        <FavoriteTab toggleTab={!toggleTab} />
         <S.CardContainer>
           {movieState.data.items &&
             movieState.data.items
               .filter(
                 //at this function i compare datas which are local and all fetched data if data which is in
                 //localstorage(favorites state), i don't render in screen.
-                ({ id: id1 }) =>
-                  !localData?.some(({ id: id2 }: any) => id2 === id1)
+                ({ id: id1 }: Movie) =>
+                  !localData?.some(({ id: id2 }: Movie) => id2 === id1)
               )
               .map((movie: Movie, key) => {
                 return (

@@ -1,7 +1,6 @@
-import { Favorite } from "icons";
+import Heart from "icons/Heart";
+import SelectedHeart from "icons/SelectedHeart";
 import styled from "styled-components";
-
-type FavoriteStyleProp = { toggle: boolean };
 
 export const Container = styled.div`
   display: flex;
@@ -34,9 +33,9 @@ export const CardContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
-export const StyledFavorite = styled(Favorite)<FavoriteStyleProp>`
+export const StyledFavorite = styled(Heart)`
   cursor: pointer;
-  & path {
-    fill: ${({ toggle }) => !toggle && "#c90000"};
-  }
+`;
+export const StyledSelectedFavorite = styled(SelectedHeart)`
+  cursor: pointer;
 `;

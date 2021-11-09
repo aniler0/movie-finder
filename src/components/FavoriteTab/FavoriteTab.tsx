@@ -1,4 +1,3 @@
-import { Delete } from "icons";
 import { useDispatch } from "react-redux";
 import { useAppSelector } from "store";
 import { deleteFavorite } from "store/favoriteSlice";
@@ -16,7 +15,6 @@ const FavoriteTab = ({ toggleTab }: FavoritePropsType) => {
       <S.FavoriteTitle>Favorite Movies</S.FavoriteTitle>
       <S.FavoriteItemContainer>
         {favorites.favorites.map((favorite, key) => {
-          console.log(favorites);
           return (
             <S.FavoriteItem key={key}>
               <S.MovieImage src={favorite.image} alt={favorite.id} />
