@@ -11,7 +11,7 @@ export const FavoriteTab = styled.div<FavoriteTabType>`
   align-items: center;
   justify-content: center;
   width: 25%;
-  height: 85%;
+  height: 88%;
   z-index: 999;
   position: absolute;
   padding: 1em;
@@ -35,7 +35,7 @@ export const FavoriteItemContainer = styled.div`
   width: 90%;
   height: 100%;
   padding: 0.5em;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 `;
 export const FavoriteItem = styled.div`
